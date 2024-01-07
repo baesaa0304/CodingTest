@@ -1,2 +1,2 @@
-# BaekjoonStudy
-백준코딩테스트
+# Coding_test
+코딩테스트
