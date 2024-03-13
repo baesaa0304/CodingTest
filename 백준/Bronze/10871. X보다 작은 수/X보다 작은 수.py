@@ -1,5 +1,5 @@
-N , X = map(int, input().split())
-a = list(map(int, input().split()))
+M, N = map(int, input().split())
+a = list(map(int,input().split()))
 for i in a:
-         if i < X:
-             print(i)
+    if i < N:
+        print(i)
