@@ -1,6 +1,6 @@
-str = input()
+str = list(input())
 num = int(input())
-list_s = list(str)
-for i in range(len(list_s)):
+
+for i in range(len(str)):
   if num- 1 == i:  
-    print(list_s[i])
+    print(str[i])
