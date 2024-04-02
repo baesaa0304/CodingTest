@@ -1,11 +1,8 @@
 N = int(input())
 soinsu = []
-divisor = 2
-
-while N > 1:
-    while N % divisor == 0:
-        soinsu.append(divisor)
-        N //= divisor
-    divisor += 1   
+for i in range(2, N+1):
+    while N % i == 0:
+        soinsu.append(i)
+        N //= i   
 for k in soinsu:
     print(k)
