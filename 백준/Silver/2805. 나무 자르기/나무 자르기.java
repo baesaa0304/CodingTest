@@ -11,7 +11,7 @@ public class Main {
 		int M = Integer.parseInt(st.nextToken()); // 가져가야할 나무 수 길이
 		int[] trees = new int[N];
 		StringTokenizer truckTokenizer = new StringTokenizer(br.readLine());
-		int max_tree = Integer.MIN_VALUE; // 나무들 중 가장 큰 나무
+		int max_tree = 0; // 나무들 중 가장 큰 나무
 		int min_tree = 0;
 		int result = 0; // 가져가야 최대값 나무
 		for (int i =0; i < N; i++) {
