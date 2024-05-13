@@ -39,7 +39,7 @@ public class Main {
 	public static void dfs(int start) {
 		visit[start] = true;
 		sb.append(start + " ");
-		for (int i = 0; i <= node; i++) {
+		for (int i = 1; i <= node; i++) {
 			if (arr[start][i] == 1 && visit[i] == false) {
 				dfs(i);
 			}
