@@ -8,7 +8,7 @@ public class Main {
 	static int cnt;
 	static int [] dx = {-1, 1, 0, 0};
 	static int [] dy = {0, 0, -1, 1};
-	
+	static ArrayList<Integer> result = new ArrayList<>();
 	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -30,16 +30,18 @@ public class Main {
 				arr[x][y] = 1;
 			}
 			
-			
 			for(int k = 0; k < M; k++) {
 				for(int p = 0; p < N; p++) {
 					if(arr[k][p] == 1 && !visit[k][p]) {
 						dfs(k, p);
-						cnt++;
+						cnt++;	
 					}
 				}
 			}
-			System.out.println(cnt);
+			result.add(cnt);	
+		}
+		for(int i =0; i < result.size(); i ++) {
+			System.out.println(result.get(i));
 		}
 
 	}
