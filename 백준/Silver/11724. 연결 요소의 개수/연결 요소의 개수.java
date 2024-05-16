@@ -1,6 +1,5 @@
-import java.util.*;
 import java.io.*;
-
+import java.util.*;
 
 public class Main {
 	static int N , M;
@@ -8,10 +7,10 @@ public class Main {
 	static int[][] arr;
 	static boolean []visit;
 	static int cnt;
+	static Queue<Integer>que = new LinkedList<>();
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
-		
 		N = Integer.parseInt(st.nextToken());
 		M = Integer.parseInt(st.nextToken());
 		arr = new int[N+1][N+1];
@@ -24,18 +23,25 @@ public class Main {
 		}
 		for(int i =1; i <= N; i++) {
 			if(!visit[i]) {
-				dfs(i);
+				bfs(i);
 				cnt++;
 			}
 		}
 		System.out.println(cnt);
 		
+	
 	}
-	public static void dfs(int start) {
+
+	public static void bfs(int start) {
+		que.offer(start);
 		visit[start] = true;
-		for(int i = 1; i <= N; i++) {
-			if(arr[start][i] == 1 && !visit[i]) {
-				dfs(i);
+		while(!que.isEmpty()) {
+			int temp = que.poll();
+			for(int i = 1; i <=N; i++) {
+				if(arr[temp][i] == 1 && !visit[i]) {
+					que.offer(i);
+					visit[i] = true;
+				}
 			}
 		}
 		
