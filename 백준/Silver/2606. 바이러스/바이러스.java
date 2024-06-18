@@ -12,7 +12,7 @@ public class Main {
 		StringTokenizer st;
 		node = Integer.parseInt(br.readLine());
         line = Integer.parseInt(br.readLine());
-		int worm = 1;
+		int worm = 1; // 바이러스 시작 값
 		arr = new int[node + 1][node +1];
 		visit = new boolean[node + 1];
 		for (int i = 0; i< line; i++) {
@@ -21,20 +21,19 @@ public class Main {
 			int b = Integer.parseInt(st.nextToken());
 			arr[a][b] = arr[b][a] =  1;
 		}
-		bfs(worm);
+		//bfs(worm);
+		dfs(worm);
 		System.out.println(cnt);
 	}
-	private static void bfs(int start) {
-		que.offer(start);
+	
+	
+	
+	private static void dfs(int start) {
 		visit[start] = true;
-		while(!que.isEmpty()){
-			int temp = que.poll();
-			for(int i = 1; i <= node; i++) {
-				if(arr[temp][i] == 1 && !visit[i]) {
-					que.offer(i);
-					visit[i] = true;
-					cnt++;
-				}
+		for(int i = 1; i <= node; i++) {
+			if(arr[start][i] == 1 && !visit[i]) {
+				dfs(i);
+				cnt++;
 			}
 		}
 		
