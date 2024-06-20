@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.io.*;
 
@@ -31,7 +30,8 @@ public class Main {
             for (int j = 1; j <= M; j++) {
                 if (arr[i][j] == 1 && !visit[i][j]) {
                     cnt = 0;
-                    bfs(i, j);
+                    //bfs(i, j);
+                    dfs(i, j);
                     maxCnt = Math.max(maxCnt, cnt);
                 }
             }
@@ -39,27 +39,16 @@ public class Main {
         System.out.println(maxCnt);
     }
 
-    private static void bfs(int x, int y) {
-        Queue<int[]> que = new LinkedList<>();
-        que.offer(new int[] {x, y});
-        visit[x][y] = true;
-        cnt = 1;
-        
-        while (!que.isEmpty()) {
-            int[] poll = que.poll();
-            int poll_x = poll[0];
-            int poll_y = poll[1];
-            
-            for (int i = 0; i < 4; i++) {
-                int next_x = poll_x + dx[i];
-                int next_y = poll_y + dy[i];
-                
-                if (next_x >= 1 && next_y >= 1 && next_x <= N && next_y <= M && !visit[next_x][next_y] && arr[next_x][next_y] == 1) {
-                    que.offer(new int[] {next_x, next_y});
-                    visit[next_x][next_y] = true;
-                    cnt++;
-                }
-            }
-        }
-    }
-}
+    private static void dfs(int x, int y) {
+		visit[x][y] = true;
+		cnt ++;
+		 for (int i = 0; i < 4; i++) {
+             int next_x = x + dx[i];
+             int next_y = y + dy[i];
+             if (next_x >= 1 && next_y >= 1 && next_x <= N && next_y <= M && !visit[next_x][next_y] && arr[next_x][next_y] == 1) {
+            	 dfs(next_x , next_y);
+             }
+		 }
+		
+	}
+} 
