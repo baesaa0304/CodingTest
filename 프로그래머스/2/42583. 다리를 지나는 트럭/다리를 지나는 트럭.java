@@ -9,7 +9,7 @@ class Solution {
         while(true){
             //다리에 트럭 없는 경우
             if(bridge_list.isEmpty()){
-                bridge_list.add(truck_weights[i]);
+                bridge_list.offer(truck_weights[i]);
                 bridge_weight+=truck_weights[i];
                 answer++;
                 break;
@@ -21,7 +21,7 @@ class Solution {
             else{
                 //다리에 트럭을 실을 수 있을 경우
                 if(bridge_weight+truck_weights[i]<=weight){
-                    bridge_list.add(truck_weights[i]);
+                    bridge_list.offer(truck_weights[i]);
                     bridge_weight+=truck_weights[i];
                     answer++;
                     break;
@@ -29,7 +29,7 @@ class Solution {
                 else{
                     //다리에 트럭 무게가 초과인 경우
                     //가상으로 0을 채워줌
-                    bridge_list.add(0);
+                    bridge_list.offer(0);
                     answer++;
                 }
                 }
