@@ -1,24 +1,34 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 
 public class Main {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int arr[] = new int[N];
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = sc.nextInt();
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int N = Integer.parseInt(br.readLine());
+        int[] numbers = new int[N];
+
+      
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        for (int i = 0; i < N; i++) {
+            numbers[i] = Integer.parseInt(st.nextToken());
         }
-        int max = arr[0];
-        int min = arr[0];
-        for (int j : arr) {
-            if (j < min) {
-                min = j;
+
+      
+        int min_number = Integer.MAX_VALUE; 
+        int max_number = Integer.MIN_VALUE; 
+
+        
+        for (int i = 0; i < numbers.length; i++) {
+            if (min_number > numbers[i]) {
+                min_number = numbers[i];
             }
-            if (j > max) {
-                max = j;
+            if (max_number < numbers[i]) {
+                max_number = numbers[i];
             }
-            
         }
-        System.out.println(min + " "+ max);
+        
+        
+        System.out.println(min_number + " " + max_number);
     }
 }
