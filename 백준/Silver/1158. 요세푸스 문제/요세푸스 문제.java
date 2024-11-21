@@ -3,29 +3,28 @@ import java.io.*;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        
-        int N = Integer.parseInt(st.nextToken());
-        int M = Integer.parseInt(st.nextToken());
-        
-        Queue<Integer>que = new LinkedList<>();
-        
-        for (int i = 1; i < N + 1; i++) {
-        	que.offer(i);
-        }
-        StringBuilder sb = new StringBuilder();
-        sb.append("<");
-        
-        while(que.size() !=  1) {
-        	for(int i = 0; i < M - 1; i++) {
-            	que.offer(que.poll());
-            } 
-        	sb.append(que.poll()).append(", ");
-        } 
-      sb.append(que.poll()).append(">");
-      System.out.println(sb);
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		StringBuilder sb = new StringBuilder();
+		Queue<Integer> que = new LinkedList<>();
+		int M = Integer.parseInt(st.nextToken()); // 총 인원
+		int N = Integer.parseInt(st.nextToken()); // 빠지는 사람
+		sb.append("<");
+		for(int i = 1; i <= M; i++) {
+			que.add(i);
+		}
+		while(!que.isEmpty()) {
+			for(int i = 1; i < N; i++) {
+				que.add(que.poll()); // 맨 앞 요소를 꺼내서 뒤로 보냄
+			}
+			sb.append(que.poll());
+			if (!que.isEmpty()) {
+                sb.append(", "); // 큐가 비어있지 않으면 쉼표 추가
+            }
+		}
+		sb.append(">");
+		System.out.println(sb.toString()); 
 	}
-	
+
 }
